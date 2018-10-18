@@ -3,6 +3,8 @@
 cmake_minimum_required(VERSION 3.9.0 FATAL_ERROR)
 set(TARGET_NAME SDL_image)
 project(${TARGET_NAME})
+
+set(CMAKE_C_COMPILER "/usr/bin/clang")
 set(CMAKE_VERBOSE_MAKEFILE TRUE)
 set(CMAKE_CXX_STANDARD 17)
 
@@ -14,13 +16,21 @@ message(STATUS "SYSTEM NAME: ${CMAKE_SYSTEM_NAME}")
 message(STATUS "ROOT_DIR: ${ROOT_DIR}")
 message(STATUS "CMAKE_SOURCE_DIR: ${CMAKE_SOURCE_DIR}")
 message(STATUS "CMAKE_CURRENT_BINARY_DIR: ${CMAKE_CURRENT_BINARY_DIR}")
+
+if ("$ENV{XCODE_SDK_PLATFORM}" STREQUAL "")
+	message(FATAL_ERROR "XCODE_SDK_PLATFORM environment variable is not defined, run xcrun --show-sdk-path and export the result.")
+else()
+	message(STATUS "XCODE_SDK_PLATFORM: $ENV{XCODE_SDK_PLATFORM}")
+endif()
 message(STATUS "-----------------------------")
 
 #SDL
 set(SDL2_DIR $ENV{GTECH_ROOT}/3rd/include/SDL2)
-set(CMAKE_C_FLAGS "-g -O3")
+set(CMAKE_C_FLAGS "-x objective-c -arch x86_64 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wno-return-type -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wno-unused-variable -Wunused-value -Wno-empty-body -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wno-constant-conversion -Wno-int-conversion -Wno-bool-conversion -Wno-enum-conversion -Wno-float-conversion -Wno-non-literal-null-conversion -Wno-objc-literal-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -isysroot $ENV{XCODE_SDK_PLATFORM}
+	-fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -mmacosx-version-min=10.6 -g -fvisibility=hidden -Wno-sign-conversion -Wno-infinite-recursion -Wno-comma -Wno-block-capture-autoreleasing -Wno-strict-prototypes -Wno-semicolon-before-method-body -MMD")
 add_library(${TARGET_NAME} STATIC
 	${CMAKE_SOURCE_DIR}/IMG.c
+	${CMAKE_SOURCE_DIR}/IMG_ImageIO.m
 	${CMAKE_SOURCE_DIR}/IMG_WIC.c
 	${CMAKE_SOURCE_DIR}/IMG_bmp.c
 	${CMAKE_SOURCE_DIR}/IMG_gif.c
@@ -40,7 +50,7 @@ add_library(${TARGET_NAME} STATIC
 	${CMAKE_SOURCE_DIR}/showimage.c 
 )
 add_definitions(
-	-DLOAD_BMP 
+	-DLOAD_BMP
 	-DLOAD_GIF 
 	-DLOAD_JPG 
 	-DLOAD_LBM 
