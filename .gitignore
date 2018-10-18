@@ -43,4 +43,6 @@ samples/*/cube.cpp
 !samples/Resources/Primitives/*.cpp
 x/
 m/
-
+Xcode/SDL_image.xcodeproj/project.pbxproj
+Xcode/SDL_image.xcodeproj/project.xcworkspace/
+Xcode/SDL_image.xcodeproj/xcuserdata/
