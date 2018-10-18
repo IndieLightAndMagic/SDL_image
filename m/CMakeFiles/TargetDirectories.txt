@@ -1,0 +1,3 @@
+/Users/julianguarin/Code/hack/c++/sdl/SDL_image/m/CMakeFiles/rebuild_cache.dir
+/Users/julianguarin/Code/hack/c++/sdl/SDL_image/m/CMakeFiles/edit_cache.dir
+/Users/julianguarin/Code/hack/c++/sdl/SDL_image/m/CMakeFiles/SDL_image.dir

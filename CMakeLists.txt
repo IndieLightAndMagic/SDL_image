@@ -39,6 +39,21 @@ add_library(${TARGET_NAME} STATIC
 	${CMAKE_SOURCE_DIR}/IMG_xxx.c
 	${CMAKE_SOURCE_DIR}/showimage.c 
 )
+add_definitions(
+	-DLOAD_BMP 
+	-DLOAD_GIF 
+	-DLOAD_JPG 
+	-DLOAD_LBM 
+	-DLOAD_PCX 
+	-DLOAD_PNG 
+	-DLOAD_PNM 
+	-DLOAD_SVG 
+	-DLOAD_TGA 
+	-DLOAD_TIF 
+	-DLOAD_WEBP 
+	-DLOAD_XPM 
+	-DLOAD_XV
+	)
 target_link_libraries(${TARGET_NAME} PUBLIC ${CMAKE_SOURCE_DIR}/../SDL/m/libSDL2.a)
 
 set(INC_DIR_SET 
