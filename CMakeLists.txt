@@ -6,10 +6,6 @@ project(${TARGET_NAME})
 set(CMAKE_VERBOSE_MAKEFILE TRUE)
 set(CMAKE_CXX_STANDARD 17)
 
-#Installation directory 
-get_filename_component(GTECH_DIR $ENV{GTECH_ROOT} ABSOLUTE)
-set(GTECH_DIR_LIB ${GTECH_DIR}/3rd/lib/)
-set(GTECH_DIR_INC ${GTECH_DIR}/3rd/include/SDLWrapper)
 
 #DIRECTORIES
 get_filename_component(ROOT_DIR "." ABSOLUTE)
@@ -24,12 +20,30 @@ message(STATUS "-----------------------------")
 set(SDL2_DIR ${CMAKE_SOURCE_DIR}/../SDL/include)
 
 add_library(${TARGET_NAME} STATIC
-    ${CMAKE_SOURCE_DIR}/sdlwrapper.cpp 
+	${CMAKE_SOURCE_DIR}/IMG.c
+	${CMAKE_SOURCE_DIR}/IMG_WIC.c
+	${CMAKE_SOURCE_DIR}/IMG_bmp.c
+	${CMAKE_SOURCE_DIR}/IMG_gif.c
+	${CMAKE_SOURCE_DIR}/IMG_jpg.c
+	${CMAKE_SOURCE_DIR}/IMG_lbm.c
+	${CMAKE_SOURCE_DIR}/IMG_pcx.c
+	${CMAKE_SOURCE_DIR}/IMG_png.c
+	${CMAKE_SOURCE_DIR}/IMG_pnm.c
+	${CMAKE_SOURCE_DIR}/IMG_svg.c
+	${CMAKE_SOURCE_DIR}/IMG_tga.c
+	${CMAKE_SOURCE_DIR}/IMG_tif.c
+	${CMAKE_SOURCE_DIR}/IMG_webp.c
+	${CMAKE_SOURCE_DIR}/IMG_xcf.c
+	${CMAKE_SOURCE_DIR}/IMG_xpm.c
+	${CMAKE_SOURCE_DIR}/IMG_xv.c
+	${CMAKE_SOURCE_DIR}/IMG_xxx.c
+	${CMAKE_SOURCE_DIR}/showimage.c 
 )
 target_link_libraries(${TARGET_NAME} PUBLIC ${CMAKE_SOURCE_DIR}/../SDL/m/libSDL2.a)
 
 set(INC_DIR_SET 
 	${SDL2_DIR}
+	${CMAKE_SOURCE_DIR}
 )
 
 target_include_directories(${TARGET_NAME} PUBLIC 
