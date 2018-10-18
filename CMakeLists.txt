@@ -68,6 +68,7 @@ add_definitions(
 set(INC_DIR_SET 
 	${SDL2_DIR}
 	${CMAKE_SOURCE_DIR}
+	${CMAKE_SOURCE_DIR}/Xcode/Frameworks/webp.framework/Versions/A/Headers
 )
 
 target_include_directories(${TARGET_NAME} PUBLIC 
