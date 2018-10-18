@@ -17,8 +17,8 @@ message(STATUS "CMAKE_CURRENT_BINARY_DIR: ${CMAKE_CURRENT_BINARY_DIR}")
 message(STATUS "-----------------------------")
 
 #SDL
-set(SDL2_DIR ${CMAKE_SOURCE_DIR}/../SDL/include)
-
+set(SDL2_DIR $ENV{GTECH_ROOT}/3rd/include/SDL2)
+set(CMAKE_C_FLAGS "-g -O3")
 add_library(${TARGET_NAME} STATIC
 	${CMAKE_SOURCE_DIR}/IMG.c
 	${CMAKE_SOURCE_DIR}/IMG_WIC.c
@@ -54,7 +54,6 @@ add_definitions(
 	-DLOAD_XPM 
 	-DLOAD_XV
 	)
-target_link_libraries(${TARGET_NAME} PUBLIC ${CMAKE_SOURCE_DIR}/../SDL/m/libSDL2.a)
 
 set(INC_DIR_SET 
 	${SDL2_DIR}
