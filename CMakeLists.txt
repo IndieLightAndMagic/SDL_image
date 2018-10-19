@@ -60,7 +60,6 @@ add_definitions(
 	-DLOAD_SVG 
 	-DLOAD_TGA 
 	-DLOAD_TIF 
-	-DLOAD_WEBP 
 	-DLOAD_XPM 
 	-DLOAD_XV
 	)
